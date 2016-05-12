@@ -11,17 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512142422) do
+ActiveRecord::Schema.define(version: 20160512172527) do
 
   create_table "opportunities", force: :cascade do |t|
     t.string   "title"
     t.string   "publisher"
+    t.string   "description"
+    t.string   "organization"
+    t.string   "opportunity_type"
+    t.date     "startdate"
+    t.string   "duration"
+    t.string   "location"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_index "opportunities", ["user_id"], name: "index_opportunities_on_user_id"
+
+  create_table "opportunity_tags", force: :cascade do |t|
+    t.integer  "opportunity_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "opportunity_tags", ["opportunity_id"], name: "index_opportunity_tags_on_opportunity_id"
+  add_index "opportunity_tags", ["tag_id"], name: "index_opportunity_tags_on_tag_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

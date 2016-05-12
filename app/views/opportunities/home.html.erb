@@ -1,0 +1,35 @@
+<div class="home_background">
+  <div class="jumbotron jumbotron_home">
+    <div class="container container_home">
+      <h1>UniverCity is:</h1>
+      <p>Developing your skills in the city.</p>
+      <p>Look for courses, workshops and events in Barcelona.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <ul class="media-list">
+
+    <% @opportunities.each { |opportunity| %>
+
+      <li class="media">
+        <div class="media-left">
+          <%= link_to(opportunity_path(opportunity.id)) do %>
+            <img class="media-object" src="http://static1.squarespace.com/static/565241a5e4b085e3bb8d651c/t/5675f84357eb8de4eb35abf5/1450571844210/workshop+2.jpg?format=1500w" alt="workshop full of people">
+          <% end %>
+        </div>
+        <div class="media-body">
+          <h5><%= opportunity.startdate.strftime("%d / %B")  %></h5>
+          <%= link_to(opportunity_path(opportunity.id)) do %>
+            <h4 class="media-heading"><%= opportunity.title %></h4>
+          <% end %>
+          <h6> by <%= opportunity.organization %></h6>
+          <%= opportunity.opportunity_type %>
+        </div>
+      </li>
+
+    <% } %>
+
+  </ul>
+</div>

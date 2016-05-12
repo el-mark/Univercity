@@ -1,0 +1,30 @@
+// Place all the styles related to the opportunities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.media-object {
+  width: 200px;
+  height: 120px;
+}
+.home_background{
+  background-image: image-url("city_drawing.jpg");
+  background-size: 100%;
+}
+.jumbotron_home {
+  background-color: rgba(250, 250, 250, 0.70);
+}
+.container_home {
+  color: black;
+}
+.background_show {
+  border-radius: 6px;
+}
+.jumbotron_show {
+  background-color:rgba(0, 0, 0, 0.4);
+  color: white;
+  // text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+}
+.opportunity_picture {
+  width: 100%;
+}

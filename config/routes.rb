@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+
   devise_for :users
+
+  resources :opportunities
+
   get '/users/:id', to: 'users#show'
-  get '/', to: 'users#home'
+
+  get '/', to: 'opportunities#home', as: 'home'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

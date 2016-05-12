@@ -1,0 +1,30 @@
+<div class="container">
+
+  <div class="background_show" style="background-image: url(http://static1.squarespace.com/static/565241a5e4b085e3bb8d651c/t/5675f84357eb8de4eb35abf5/1450571844210/workshop+2.jpg?format=1500w);">
+    <div class="jumbotron jumbotron_show">
+      <h4><%= @opportunity.startdate.strftime("%d / %B") %></h4>
+      <h1><%= @opportunity.title %></h1>
+      <p><%= @opportunity.opportunity_type %></p>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-body">
+      <p><strong>Description: </strong><%= @opportunity.description %></p>
+    </div>
+
+    <!-- List group -->
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Organization: </strong><%= @opportunity.organization %></li>
+      <li class="list-group-item"><strong>Duration: </strong><%= @opportunity.duration %></li>
+      <li class="list-group-item"><strong>Location: </strong><%= @opportunity.location %></li>
+    </ul>
+    <div class="panel-footer">
+      <strong>Tags: </strong>
+        <% @tags.each { |tag| %>
+          <span class="label label-info"> <%= tag.name %></span> <%=" "%>
+        <% } %>
+    </div>
+  </div>
+  <!-- <img src="http://www.planwallpaper.com/static/images/Download-Cool-Wallpaper-Cars-Background.jpg" alt="opportunity picture" class="img-rounded opportunity_picture"> -->
+</div>
