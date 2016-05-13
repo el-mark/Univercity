@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   resources :opportunities
 
-  get '/users/:id', to: 'users#show', as: 'users_show'
-
   get '/', to: 'opportunities#home', as: 'home'
+  get '/users/oportunities/show', to: 'users#show', as: 'users_show'
+  get '/users/oportunities/create', to: 'users#create', as: 'users_create'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

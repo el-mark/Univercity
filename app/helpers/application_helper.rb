@@ -11,7 +11,7 @@ module ApplicationHelper
   end
   def profile_button
     if user_signed_in?
-      link_to 'Profile', users_show_path(current_user.id)
+      link_to 'Profile', users_show_path
     end
   end
 end
