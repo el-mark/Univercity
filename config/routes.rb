@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :opportunities
 
-  get '/users/:id', to: 'users#show'
+  get '/users/:id', to: 'users#show', as: 'users_show'
 
   get '/', to: 'opportunities#home', as: 'home'
 
