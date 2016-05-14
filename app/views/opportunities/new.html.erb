@@ -1,0 +1,60 @@
+<div class="container">
+  <% if user_signed_in? %>
+    <div class="panel-signin">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h2>Create Opportunity</h2>
+        </div>
+        <div class="panel-body">
+          <br />
+          <%= form_for @opportunity, url: opportunities_path do |f| %>
+            <div class="field form-group">
+              <%= f.label :title %><br />
+              <%= f.text_field :title, autofocus: true, :class => "form-control" %>
+            </div>
+            <div class="field form-group">
+              <%= f.label :description %><br />
+              <%= f.text_field :description, :class => "form-control" %>
+            </div>
+            <div class="field form-group">
+              <%= f.label :opportunity_type %><br />
+              <%= f.text_field :opportunity_type, :class => "form-control" %>
+            </div>
+            <div class="field form-group">
+              <%= f.label :startdate %><br />
+              <%= f.date_field :startdate, :class => "form-control" %>
+            </div>
+            <div class="field form-group">
+              <%= f.label :duration %><br />
+              <%= f.text_field :duration, :class => "form-control" %>
+            </div>
+            <div class="field form-group">
+              <%= f.label :location %><br />
+              <%= f.text_field :location, :class => "form-control" %>
+            </div>
+            <div class="actions">
+              <%= f.submit "Create Opportunity", :class => "btn btn-default" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="container">
+      <div class="panel-signin">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2>Nobody logged in</h2>
+          </div>
+          <div class="panel-body">
+            <h4>In order to publish new opportunities you have to either:</h4>
+            <h4><%= link_to 'Log in', new_user_session_path, class: 'btn btn-primary', role: 'button' %> If you already have an account.</h4>
+            <h4>or<h4>
+            <h4><%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary', role: 'button' %> And create an account.</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

@@ -24,16 +24,17 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><%= link_to "Find", home_path %></li>
-          <li><a href="#">Create</a></li>
+          <li><%= link_to "Create Opportunity", new_opportunity_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li <%= log_out_hide %>><%= link_to "Log in", new_user_session_path %></li>
           <li <%= log_out_hide %>><%= link_to "Sign up", new_user_registration_path %></li>
           <li class="dropdown" <%= sign_in_hide %>>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Session<span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= if_current_user_name %><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/users/sign_out" data-method="DELETE">Logout</a></li>
-                <li><%= profile_button %></li>
+                <li><%= link_to "My Opportunities", opportunities_path %></li>
+                <li><%= link_to "Create Opportunity", new_opportunity_path %></li>
               </ul>
           </li>
 

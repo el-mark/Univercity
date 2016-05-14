@@ -9,9 +9,9 @@ module ApplicationHelper
       raw("style='display: none;'")
     end
   end
-  def profile_button
+  def if_current_user_name
     if user_signed_in?
-      link_to 'Profile', users_show_path
+      current_user.name
     end
   end
 end

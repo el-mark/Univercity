@@ -1,7 +1,7 @@
 <div class="container">
   <% if user_signed_in? %>
     <h2>Welcome <%= current_user.name %>!</h2>
-    <%= link_to 'Create new opportunity', users_create_path, class: 'btn btn-primary', role: 'button' %>
+    <%= link_to 'New opportunity', new_opportunity_path, class: 'btn btn-primary', role: 'button' %>
     <br>
     <br>
     <ul class="media-list">

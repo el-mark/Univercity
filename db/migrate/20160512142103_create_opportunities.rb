@@ -2,8 +2,6 @@ class CreateOpportunities < ActiveRecord::Migration
   def change
     create_table :opportunities do |t|
       t.string   :title
-      t.string   :publisher #borrar
-
       t.string   :description
       t.string   :organization
       t.string   :opportunity_type
