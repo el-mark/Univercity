@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
   get '/', to: 'opportunities#home', as: 'home'
 
+  get '/cuator/login' to: 'opportunities#home', as: 'curator_login'
+
+  get '/cuator/index' to: 'opportunities#home', as: 'curator_index'
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
