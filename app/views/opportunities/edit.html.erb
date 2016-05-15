@@ -3,11 +3,11 @@
     <div class="panel-signin">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h2>Create Opportunity</h2>
+          <h2>Edit Opportunity</h2>
         </div>
         <div class="panel-body">
           <br />
-          <%= form_for @opportunity, url: opportunities_path do |f| %>
+          <%= form_for @opportunity, url: opportunity_path do |f| %>
             <div class="field form-group">
               <%= f.label :title %><br />
               <%= f.text_field :title, autofocus: true, :class => "form-control" %>
@@ -33,7 +33,7 @@
               <%= f.text_field :location, :class => "form-control" %>
             </div>
             <div class="actions">
-              <%= f.submit "Create Opportunity", :class => "btn btn-default" %>
+              <%= f.submit "Save changes", :class => "btn btn-default" %>
             </div>
           <% end %>
         </div>
@@ -44,12 +44,6 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h2>Nobody logged in</h2>
-        </div>
-        <div class="panel-body">
-          <h4>In order to publish new opportunities you have to either:</h4>
-          <h4><%= link_to 'Log in', new_user_session_path, class: 'btn btn-primary', role: 'button' %> If you already have an account.</h4>
-          <h4>or<h4>
-          <h4><%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary', role: 'button' %> And create an account.</h4>
         </div>
       </div>
     </div>

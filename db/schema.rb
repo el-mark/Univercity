@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20160512172527) do
 
   create_table "opportunities", force: :cascade do |t|
     t.string   "title"
-    t.string   "publisher"
     t.string   "description"
     t.string   "organization"
     t.string   "opportunity_type"

@@ -3,7 +3,6 @@ class CreateOpportunities < ActiveRecord::Migration
     create_table :opportunities do |t|
       t.string   :title
       t.string   :description
-      t.string   :organization
       t.string   :opportunity_type
       t.date     :startdate
       t.string   :duration
