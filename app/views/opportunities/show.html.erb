@@ -15,7 +15,7 @@
 
     <!-- List group -->
     <ul class="list-group">
-      <li class="list-group-item"><strong>Organization: </strong><%= @opportunity.organization %></li>
+      <li class="list-group-item"><strong>Organization: </strong><%= @opportunity.user.name %></li>
       <li class="list-group-item"><strong>Duration: </strong><%= @opportunity.duration %></li>
       <li class="list-group-item"><strong>Location: </strong><%= @opportunity.location %></li>
     </ul>

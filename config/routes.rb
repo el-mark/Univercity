@@ -2,13 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :opportunities
-
   get '/', to: 'opportunities#home', as: 'home'
 
-  get '/cuator/login' to: 'opportunities#home', as: 'curator_login'
+  get '/opportunities/approvals', to: 'opportunities#approvals', as: 'approvals'
 
-  get '/cuator/index' to: 'opportunities#home', as: 'curator_index'
+  resources :opportunities
 
 
 

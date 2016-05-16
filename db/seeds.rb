@@ -13,6 +13,7 @@ teamlabs, the_creativity_workshop, ironhack, marketing_school, business_institut
    {name: 'Ironhack', email: 'ironhack@g.com', password: 'ironhack', password_confirmation: 'ironhack'},
    {name: 'Marketing School', email: 'marketing@g.com', password: 'marketing', password_confirmation: 'marketing'},
    {name: 'Business Institute', email: 'business@g.com', password: 'business', password_confirmation: 'business'},
+   {name: 'Marcos', email: 'marcos@g.com', password: 'marcos', password_confirmation: 'marcos', role: 'Curator'},
 ])
 
 t1 = Tag.create!(name:'Marketing')
