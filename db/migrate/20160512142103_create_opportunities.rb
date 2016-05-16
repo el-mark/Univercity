@@ -7,6 +7,7 @@ class CreateOpportunities < ActiveRecord::Migration
       t.date     :startdate
       t.string   :duration
       t.string   :location
+      t.boolean  :published, null: false, default: false
 
       t.references :user, index:true
 

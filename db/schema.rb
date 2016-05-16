@@ -11,14 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515181324) do
-
-  create_table "curators", force: :cascade do |t|
-    t.string   "email",              default: "", null: false
-    t.string   "encrypted_password", default: "", null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-  end
+ActiveRecord::Schema.define(version: 20160512172527) do
 
   create_table "opportunities", force: :cascade do |t|
     t.string   "title"
@@ -27,9 +20,10 @@ ActiveRecord::Schema.define(version: 20160515181324) do
     t.date     "startdate"
     t.string   "duration"
     t.string   "location"
+    t.boolean  "published",        default: false, null: false
     t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "opportunities", ["user_id"], name: "index_opportunities_on_user_id"

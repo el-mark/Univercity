@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/opportunities/approvals', to: 'opportunities#approvals', as: 'approvals'
 
+  get '/opportunities/:id/publish', to: 'opportunities#publish', as: 'publish'
+
   resources :opportunities
 
 
