@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get '/opportunities/:id/publish', to: 'opportunities#publish', as: 'publish'
 
+  get '/opportunities/:id/un_publish', to: 'opportunities#un_publish', as: 'un_publish'
+
   resources :opportunities
 
 

@@ -1,41 +1,77 @@
 <div class="container">
   <% if user_signed_in? %>
-    <h2>Welcome <%= current_user.name %>!</h2>
+    <h2 class="my_opportunities">Welcome <%= current_user.name %>!</h2>
+    <h2>My Opportunities</h2>
     <%= link_to 'Create Opportunity', new_opportunity_path, class: 'btn btn-primary', role: 'button' %>
     <br>
-    <br>
-    <ul class="media-list">
-      <% @opportunities.each { |opportunity| %>
+    <% if @not_published_yet.length > 0 %>
+      <h3>Not published yet (waiting for approval)</h3>
+      <ul class="media-list">
+        <% @not_published_yet.each { |opportunity| %>
 
-        <li class="media">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="media-left">
-                <%= link_to(opportunity_path(opportunity.id)) do %>
-                  <img class="media-object" src="http://static1.squarespace.com/static/565241a5e4b085e3bb8d651c/t/5675f84357eb8de4eb35abf5/1450571844210/workshop+2.jpg?format=1500w" alt="workshop full of people">
-                <% end %>
+          <li class="media">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="media-left">
+                  <%= link_to(opportunity_path(opportunity.id)) do %>
+                    <img class="media-object" src="http://static1.squarespace.com/static/565241a5e4b085e3bb8d651c/t/5675f84357eb8de4eb35abf5/1450571844210/workshop+2.jpg?format=1500w" alt="workshop full of people">
+                  <% end %>
+                </div>
+                <div class="media-body">
+                  <h5><%= opportunity.startdate.strftime("%d / %B")  %></h5>
+                  <%= link_to(opportunity_path(opportunity.id)) do %>
+                    <h4 class="media-heading"><%= opportunity.title %></h4>
+                  <% end %>
+                  <h6> by <%= opportunity.user.name %></h6>
+                  <%= opportunity.opportunity_type %>
+                </div>
               </div>
-              <div class="media-body">
-                <h5><%= opportunity.startdate.strftime("%d / %B")  %></h5>
-                <%= link_to(opportunity_path(opportunity.id)) do %>
-                  <h4 class="media-heading"><%= opportunity.title %></h4>
-                <% end %>
-                <h6> by <%= opportunity.user.name %></h6>
-                <%= opportunity.opportunity_type %>
+              <div class="panel-footer">
+                <%if current_user.role == "Curator";%><%= link_to "Publish", publish_path(opportunity.id), class: "btn btn-success" %><% end %>
+                <%= link_to "Edit", edit_opportunity_path(opportunity.id), class: "btn btn-warning" %>
+                <%= link_to "Delete", opportunity_path(opportunity.id), :method => "DELETE", class: "btn btn-danger" %>
               </div>
             </div>
-            <div class="panel-footer">
-              <%= link_to "Edit", edit_opportunity_path(opportunity.id), class: "btn btn-warning" %>
-              <%= link_to "Delete", opportunity_path(opportunity.id), :method => "DELETE", class: "btn btn-danger" %>
-            </div>
-          </div>
-        </li>
-
-      <% } %>
-      <br>
-      <%= link_to 'Logout', destroy_user_session_path, method: 'DELETE' %>
-    <% else %>
-      <h2>Nobody logged in</h2>
+          </li>
+        <% } %>
+      </ul>
     <% end %>
-  </ul>
+    <br>
+    <% if @published.length > 0 %>
+      <h3>Published</h3>
+      <ul class="media-list">
+        <% @published.each { |opportunity| %>
+
+          <li class="media">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="media-left">
+                  <%= link_to(opportunity_path(opportunity.id)) do %>
+                    <img class="media-object" src="http://static1.squarespace.com/static/565241a5e4b085e3bb8d651c/t/5675f84357eb8de4eb35abf5/1450571844210/workshop+2.jpg?format=1500w" alt="workshop full of people">
+                  <% end %>
+                </div>
+                <div class="media-body">
+                  <h5><%= opportunity.startdate.strftime("%d / %B")  %></h5>
+                  <%= link_to(opportunity_path(opportunity.id)) do %>
+                    <h4 class="media-heading"><%= opportunity.title %></h4>
+                  <% end %>
+                  <h6> by <%= opportunity.user.name %></h6>
+                  <%= opportunity.opportunity_type %>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <%if current_user.role == "Curator";%><%= link_to "Un Publish", un_publish_path(opportunity.id), class: "btn btn-warning" %><% end %>
+                <%= link_to "Edit", edit_opportunity_path(opportunity.id), class: "btn btn-warning" %>
+                <%= link_to "Delete", opportunity_path(opportunity.id), :method => "DELETE", class: "btn btn-danger" %>
+              </div>
+            </div>
+          </li>
+        <% } %>
+      </ul>
+    <% end %>
+    <br>
+    <%= link_to 'Logout', destroy_user_session_path, method: 'DELETE' %>
+  <% else %>
+    <h2>Nobody logged in</h2>
+  <% end %>
 </div>

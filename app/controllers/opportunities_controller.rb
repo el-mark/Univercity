@@ -8,8 +8,14 @@ class OpportunitiesController < ApplicationController
     @tags = @opportunity.tags
   end
   def index
-    opportunities = current_user.opportunities
-    @opportunities = opportunities.order(startdate: :asc)
+    if current_user.role == "Curator"
+      opportunities = Opportunity.all
+    else
+      opportunities = current_user.opportunities
+    end
+    opportunities_in_order = opportunities.order(startdate: :asc)
+    @not_published_yet = opportunities_in_order.where published: false
+    @published = opportunities_in_order.where published: true
   end
   def new
     @opportunity = Opportunity.new
@@ -57,7 +63,15 @@ class OpportunitiesController < ApplicationController
       @opportunity.update(:published => true)
     end
 
-    redirect_to approvals_path
+    redirect_to opportunities_path
+  end
+  def un_publish
+    if current_user.role == "Curator"
+      @opportunity = Opportunity.find_by id: params[:id]
+      @opportunity.update(:published => false)
+    end
+
+    redirect_to opportunities_path
   end
 
   private
