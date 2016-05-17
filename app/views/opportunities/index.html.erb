@@ -68,7 +68,7 @@
                 </div>
               </div>
               <div class="panel-footer">
-                <%if current_user.role == "Curator";%><%= link_to "Un Publish", un_publish_path(opportunity.id), class: "btn btn-warning" %><% end %>
+                <%= link_to "Unpublish", unpublish_path(opportunity.id), class: "btn btn-warning" %>
                 <%= link_to "Edit", edit_opportunity_path(opportunity.id), class: "btn btn-warning" %>
                 <%= link_to "Delete", opportunity_path(opportunity.id), :method => "DELETE", class: "btn btn-danger" %>
               </div>

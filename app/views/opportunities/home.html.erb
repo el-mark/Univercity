@@ -9,31 +9,82 @@
 </div>
 
 <div class="container">
-  <ul class="media-list">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <%= form_tag(home_path, :method => "get", id: "search-form", class: "navbar-form navbar-left") do %>
+        <div class="form-group">
+          <%= text_field_tag :search, params[:search], placeholder: "Search opportunities", class:"form-control" %>
+        </div>
+        <%= submit_tag "Search", class: "btn btn-default" %>
+      <% end %>
+    </div>
+  </nav>
 
-    <% @opportunities.each { |opportunity| %>
+  <% if params[:search] %>
 
-      <li class="media">
-        <div class="media-left">
-          <%= link_to(opportunity_path(opportunity.id)) do %>
-            <% if opportunity.pic.url != "" %>
-              <%= image_tag(opportunity.pic.url, class: "media-object") %>
-            <% else %>
-              <%= image_tag("opportunity_default.jpg", class: "media-object") %>
+    <% if @opportunities.present? %>
+      <ul class="media-list">
+
+        <% @opportunities.each { |opportunity| %>
+
+          <li class="media">
+            <div class="media-left">
+              <%= link_to(opportunity_path(opportunity.id)) do %>
+                <% if opportunity.pic.url != "" %>
+                  <%= image_tag(opportunity.pic.url, class: "media-object") %>
+                <% else %>
+                  <%= image_tag("opportunity_default.jpg", class: "media-object") %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="media-body">
+              <h5><%= opportunity.startdate.strftime("%d / %B")  %></h5>
+              <%= link_to(opportunity_path(opportunity.id)) do %>
+                <h4 class="media-heading"><%= opportunity.title %></h4>
+              <% end %>
+              <h6> by <%= opportunity.user.name %></h6>
+              <%= opportunity.opportunity_type %>
+            </div>
+          </li>
+
+        <% } %>
+
+      </ul>
+
+    <% else %>
+      <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+    <% end %>
+
+  <% else %>
+
+
+    <ul class="media-list">
+
+      <% @opportunities.each { |opportunity| %>
+
+        <li class="media">
+          <div class="media-left">
+            <%= link_to(opportunity_path(opportunity.id)) do %>
+              <% if opportunity.pic.url != "" %>
+                <%= image_tag(opportunity.pic.url, class: "media-object") %>
+              <% else %>
+                <%= image_tag("opportunity_default.jpg", class: "media-object") %>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-        <div class="media-body">
-          <h5><%= opportunity.startdate.strftime("%d / %B")  %></h5>
-          <%= link_to(opportunity_path(opportunity.id)) do %>
-            <h4 class="media-heading"><%= opportunity.title %></h4>
-          <% end %>
-          <h6> by <%= opportunity.user.name %></h6>
-          <%= opportunity.opportunity_type %>
-        </div>
-      </li>
+          </div>
+          <div class="media-body">
+            <h5><%= opportunity.startdate.strftime("%d / %B")  %></h5>
+            <%= link_to(opportunity_path(opportunity.id)) do %>
+              <h4 class="media-heading"><%= opportunity.title %></h4>
+            <% end %>
+            <h6> by <%= opportunity.user.name %></h6>
+            <%= opportunity.opportunity_type %>
+          </div>
+        </li>
 
-    <% } %>
+      <% } %>
+    </ul>
 
-  </ul>
+  <% end %>
+
 </div>
