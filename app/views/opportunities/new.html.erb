@@ -32,6 +32,10 @@
               <%= f.label :location %><br />
               <%= f.text_field :location, :class => "form-control" %>
             </div>
+            <div class="field form-group">
+              <%= f.label :'Opportnity picture' %>
+              <%= f.file_field :pic %>
+            </div>
             <div class="actions">
               <%= f.submit "Create Opportunity", :class => "btn btn-default" %>
             </div>

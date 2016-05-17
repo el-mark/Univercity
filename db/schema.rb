@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512172527) do
+ActiveRecord::Schema.define(version: 20160517095108) do
 
   create_table "opportunities", force: :cascade do |t|
     t.string   "title"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(version: 20160512172527) do
     t.integer  "user_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
   add_index "opportunities", ["user_id"], name: "index_opportunities_on_user_id"

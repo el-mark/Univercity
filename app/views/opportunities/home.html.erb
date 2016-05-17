@@ -16,7 +16,11 @@
       <li class="media">
         <div class="media-left">
           <%= link_to(opportunity_path(opportunity.id)) do %>
-            <img class="media-object" src="http://static1.squarespace.com/static/565241a5e4b085e3bb8d651c/t/5675f84357eb8de4eb35abf5/1450571844210/workshop+2.jpg?format=1500w" alt="workshop full of people">
+            <% if opportunity.pic.url != "" %>
+              <%= image_tag(opportunity.pic.url, class: "media-object") %>
+            <% else %>
+              <%= image_tag("opportunity_default.jpg", class: "media-object") %>
+            <% end %>
           <% end %>
         </div>
         <div class="media-body">

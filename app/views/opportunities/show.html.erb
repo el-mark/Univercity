@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="background_show" style="background-image: url(http://static1.squarespace.com/static/565241a5e4b085e3bb8d651c/t/5675f84357eb8de4eb35abf5/1450571844210/workshop+2.jpg?format=1500w);">
+  <div class="background_show" style="background-image: url(<%= @opportunity.pic.url %>);">
     <div class="jumbotron jumbotron_show">
       <h4><%= @opportunity.startdate.strftime("%d / %B") %></h4>
       <h1><%= @opportunity.title %></h1>
@@ -25,6 +25,7 @@
           <span class="label label-info"> <%= tag.name %></span> <%=" "%>
         <% } %>
     </div>
+
   </div>
   <!-- <img src="http://www.planwallpaper.com/static/images/Download-Cool-Wallpaper-Cars-Background.jpg" alt="opportunity picture" class="img-rounded opportunity_picture"> -->
 </div>
