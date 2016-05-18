@@ -1,0 +1,31 @@
+<ul class="media-list">
+  <% @opportunities.each { |opportunity| %>
+
+    <li class="media">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media-left">
+            <%= link_to(opportunity_path(opportunity.id)) do %>
+              <% if opportunity.pic.url != "" %>
+                <%= image_tag(opportunity.pic.url, class: "media-object") %>
+              <% else %>
+                <%= image_tag("opportunity_default.jpg", class: "media-object") %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="media-body">
+            <h5><%= opportunity.startdate.strftime("%d / %B")  %></h5>
+            <%= link_to(opportunity_path(opportunity.id)) do %>
+              <h4 class="media-heading"><%= opportunity.title %></h4>
+            <% end %>
+            <h6> by <%= opportunity.user.name %></h6>
+            <%= opportunity.opportunity_type %>
+          </div>
+        </div>
+        <div class="panel-footer">
+        </div>
+      </div>
+    </li>
+    
+  <% } %>
+</ul>
