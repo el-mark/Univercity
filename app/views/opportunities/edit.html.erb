@@ -1,49 +1,9 @@
 <div class="container">
   <% if user_signed_in? %>
     <% if @opportunity.published == false %>
-      <div class="panel-signin">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h2>Edit Opportunity</h2>
-          </div>
-          <div class="panel-body">
-            <br />
-            <%= form_for @opportunity, url: opportunity_path do |f| %>
-              <div class="field form-group">
-                <%= f.label :title %><br />
-                <%= f.text_field :title, autofocus: true, :class => "form-control" %>
-              </div>
-              <div class="field form-group">
-                <%= f.label :description %><br />
-                <%= f.text_field :description, :class => "form-control" %>
-              </div>
-              <div class="field form-group">
-                <%= f.label :opportunity_type %><br />
-                <%= f.text_field :opportunity_type, :class => "form-control" %>
-              </div>
-              <div class="field form-group">
-                <%= f.label :startdate %><br />
-                <%= f.date_field :startdate, :class => "form-control" %>
-              </div>
-              <div class="field form-group">
-                <%= f.label :duration %><br />
-                <%= f.text_field :duration, :class => "form-control" %>
-              </div>
-              <div class="field form-group">
-                <%= f.label :location %><br />
-                <%= f.text_field :location, :class => "form-control" %>
-              </div>
-              <div class="field form-group">
-                <%= f.label :'Opportnity picture' %>
-                <%= f.file_field :pic %>
-              </div>
-              <div class="actions">
-                <%= f.submit "Save changes", :class => "btn btn-default" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
+
+      <%= render partial: "partials/form", locals: {title: "Edit Oportunity", path_variable: opportunity_path, submit_variable: "Save changes"} %>
+
     <% else %>
     <div class="panel-signin">
       <div class="panel panel-default">

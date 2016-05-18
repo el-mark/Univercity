@@ -26,7 +26,7 @@
         </div>
         <div class="field form-group">
           <%= f.label :opportunity_type %><br />
-          <%= f.text_field :opportunity_type, :class => "form-control" %>
+          <%= f.select(:opportunity_type, ['Event', 'Workshop', 'Course'], {}, { :class => 'form-control' }) %>
         </div>
         <div class="field form-group">
           <%= f.label :start_date %><br />
