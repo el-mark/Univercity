@@ -44,7 +44,17 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-
+  <%if params[:action] == "home" %>
+    <div class="home_background">
+      <div class="jumbotron jumbotron_home">
+        <div class="container container_home">
+          <h1>UniverCity is:</h1>
+          <p>Developing your skills in the city.</p>
+          <p>Look for courses, workshops and events in Barcelona.</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
   <div class="container">
     <% flash.each do |key, value| %>
       <div class="alert alert-info" role="alert">
