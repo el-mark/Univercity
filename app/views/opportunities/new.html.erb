@@ -1,23 +1,22 @@
 <div class="container">
   <% if user_signed_in? %>
     <div class="panel-signin">
-      <% if @opportunity.errors.any? %>
-        <div class="panel panel-danger">
-          <div class="panel-heading">Errors:</div>
-          <div class="panel-body">
-            <ul>
-              <% @opportunity.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      <% end %>
+
       <div class="panel panel-default">
         <div class="panel-heading">
           <h2>Create Opportunity</h2>
         </div>
         <div class="panel-body">
+          <% if @opportunity.errors.any? %>
+            <div class="alert alert-danger" role="alert">
+              <h4><strong>Errors:</strong></h4>
+                <ul>
+                  <% @opportunity.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+            </div>
+          <% end %>
           <br />
           <%= form_for @opportunity, url: opportunities_path do |f| %>
             <div class="field form-group">

@@ -33,8 +33,11 @@ class OpportunitiesController < ApplicationController
   def create
     @opportunity = current_user.opportunities.new(opportunity_params)
 
-    @opportunity.save
-    redirect_to @opportunity
+    if @opportunity.save
+      redirect_to @opportunity, :notice => "Your opportunity was created"
+    else
+      render "new"
+     end
   end
 
   def destroy
@@ -81,7 +84,7 @@ class OpportunitiesController < ApplicationController
 
     redirect_to opportunities_path
   end
-  
+
   def unpublish
     @opportunity = Opportunity.find_by id: params[:id]
     @opportunity.update(:published => false)
@@ -91,6 +94,6 @@ class OpportunitiesController < ApplicationController
 
   private
   def opportunity_params
-    params.require(:opportunity).permit(:title, :description, :organization, :opportunity_type, :startdate, :duration, :location, :pic)
+    params.require(:opportunity).permit(:title, :description, :opportunity_type, :startdate, :duration, :location, :pic)
   end
 end

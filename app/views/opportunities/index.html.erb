@@ -5,7 +5,7 @@
     <%= link_to 'Create Opportunity', new_opportunity_path, class: 'btn btn-primary', role: 'button' %>
     <br>
     <% if @not_published_yet.length > 0 %>
-      <h3>Not published yet (waiting for approval)</h3>
+      <h3>Not published yet (Waiting for approval)</h3>
       <ul class="media-list">
         <% @not_published_yet.each { |opportunity| %>
 

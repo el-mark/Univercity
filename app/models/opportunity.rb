@@ -4,8 +4,9 @@ class Opportunity < ActiveRecord::Base
   has_many :tags, through: :opportunity_tags
   has_attached_file :pic, default_url: ""
 
-  validates_attachment :pic, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  validates_attachment :pic, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]}
   validates :title, :description, :opportunity_type, :startdate, :duration, :location,  presence: true
+  validates :title, :uniqueness => true
 
 
   def self.search(search)
