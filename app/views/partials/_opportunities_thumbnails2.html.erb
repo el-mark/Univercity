@@ -5,9 +5,9 @@
           <div class="thumbnail">
             <%= link_to(opportunity_path(opportunity.id)) do %>
               <% if opportunity.pic.url != "" %>
-                <div class="opportunity-background" style="background-image: url(<%= opportunity.pic.url %>);"></div>
+                <%= image_tag(opportunity.pic.url, class: "opportunity-image") %>
               <% else %>
-                <div class="opportunity-background background-image-default"></div>
+                <%= image_tag("opportunity_default.jpg", class: "opportunity-image") %>
               <% end %>
             <% end %>
             <div class="caption">

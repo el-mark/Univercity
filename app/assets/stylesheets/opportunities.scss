@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// .media-object {
-//   width: 200px;
-//   height: 120px;
-// }
+.media-object {
+  width: 200px;
+  height: 120px;
+}
 .home_background{
   background-image: image-url("city_drawing.jpg");
   background-size: 100%;
@@ -31,3 +31,16 @@
 .home .navabar-header {
   margin-bottom: 0px;
 }
+.thumbnail {
+  height: 300px;
+}
+.opportunity-background {
+  height: 52%;
+  background-size: 100%;
+}
+.background-image-default {
+  background-image: image-url("opportunity_default.jpg");
+}
+  // .opportunity-image {
+  //   max-height: 200px;
+  // }
