@@ -11,7 +11,7 @@ class Opportunity < ActiveRecord::Base
 
   def self.search(search)
     s = "%#{search}%"
-    Opportunity.where("title LIKE ? or description LIKE ?", s, s)
+    Opportunity.where("title LIKE ? or description LIKE ? or location LIKE ?", s, s, s)
   end
   # def self.search(search)
   #   @s = "%#{search}%"
