@@ -28,10 +28,12 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <%unless user_signed_in?%>
-            <li <%= log_out_hide %>><%= link_to "Log in", new_user_session_path %></li>
-            <li <%= log_out_hide %>><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
           <% end %>
           <%if user_signed_in?%>
+            <%if current_user.role == "Curator";%><li class="active"><a href="#"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Curator <span class="sr-only">(current)</span></a></li><% end %>
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= if_current_user_name %><span class="caret"></span></a>
                 <ul class="dropdown-menu">

@@ -48,7 +48,7 @@ class OpportunitiesController < ApplicationController
     end
     @opportunity.delete
 
-    redirect_to opportunities_path
+    redirect_to opportunities_path, :notice => "Your opportunity was deleted"
   end
 
   def edit
