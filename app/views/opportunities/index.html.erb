@@ -2,80 +2,20 @@
   <% if user_signed_in? %>
     <h2 class="my_opportunities">Welcome <%= current_user.name %>!</h2>
     <h2>My Opportunities</h2>
-    <%= link_to 'Create Opportunity', new_opportunity_path, class: 'btn btn-primary', role: 'button' %>
+    <%= link_to 'Create Opportunity', new_opportunity_path, class: 'btn btn-default', role: 'button' %>
     <br>
     <% if @not_published_yet.length > 0 %>
       <h3>Not published yet (Waiting for approval)</h3>
-      <ul class="media-list">
-        <% @not_published_yet.each { |opportunity| %>
 
-          <li class="media">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="media-left">
-                  <%= link_to(opportunity_path(opportunity.id)) do %>
-                    <% if opportunity.pic.url != "" %>
-                      <%= image_tag(opportunity.pic.url, class: "media-object") %>
-                    <% else %>
-                      <%= image_tag("opportunity_default.jpg", class: "media-object") %>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div class="media-body">
-                  <h5><%= opportunity.startdate.strftime("%d / %B")  %></h5>
-                  <%= link_to(opportunity_path(opportunity.id)) do %>
-                    <h4 class="media-heading"><%= opportunity.title %></h4>
-                  <% end %>
-                  <h6> by <%= opportunity.user.name %></h6>
-                  <%= opportunity.opportunity_type %>
-                </div>
-              </div>
-              <div class="panel-footer">
-                <%if current_user.role == "Curator";%><%= link_to "Publish", publish_path(opportunity.id), class: "btn btn-success" %><% end %>
-                <%= link_to "Edit", edit_opportunity_path(opportunity.id), class: "btn btn-warning" %>
-                <%= link_to "Delete", opportunity_path(opportunity.id), :method => "DELETE", class: "btn btn-danger" %>
-              </div>
-            </div>
-          </li>
-        <% } %>
-      </ul>
+      <%= render partial: "partials/opportunities_index", locals: {opportunities: @not_published_yet, button: "publish"}%>
+
     <% end %>
     <br>
     <% if @published.length > 0 %>
       <h3>Published</h3>
-      <ul class="media-list">
-        <% @published.each { |opportunity| %>
 
-          <li class="media">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="media-left">
-                  <%= link_to(opportunity_path(opportunity.id)) do %>
-                    <% if opportunity.pic.url != "" %>
-                      <%= image_tag(opportunity.pic.url, class: "media-object") %>
-                    <% else %>
-                      <%= image_tag("opportunity_default.jpg", class: "media-object") %>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div class="media-body">
-                  <h5><%= opportunity.startdate.strftime("%d / %B")  %></h5>
-                  <%= link_to(opportunity_path(opportunity.id)) do %>
-                    <h4 class="media-heading"><%= opportunity.title %></h4>
-                  <% end %>
-                  <h6> by <%= opportunity.user.name %></h6>
-                  <%= opportunity.opportunity_type %>
-                </div>
-              </div>
-              <div class="panel-footer">
-                <%= link_to "Unpublish", unpublish_path(opportunity.id), class: "btn btn-warning" %>
-                <%= link_to "Edit", edit_opportunity_path(opportunity.id), class: "btn btn-warning" %>
-                <%= link_to "Delete", opportunity_path(opportunity.id), :method => "DELETE", class: "btn btn-danger" %>
-              </div>
-            </div>
-          </li>
-        <% } %>
-      </ul>
+      <%= render partial: "partials/opportunities_index", locals: {opportunities: @published, button: "unpublish"}%>
+
     <% end %>
     <br>
     <%= link_to 'Logout', destroy_user_session_path, method: 'DELETE' %>

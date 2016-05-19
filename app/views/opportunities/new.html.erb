@@ -10,10 +10,8 @@
           <h2>Create opportunity</h2>
         </div>
         <div class="panel-body">
-          <h4>In order to publish new opportunities you have to either:</h4>
-          <h4><%= link_to 'Log in', new_user_session_path, class: 'btn btn-primary', role: 'button' %> If you already have an account.</h4>
-          <h4>or<h4>
-          <h4><%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary', role: 'button' %> And create an account.</h4>
+          <h4>In order to publish new opportunities you have to Log in or Sign up: </h4>
+          <h4><%= link_to 'Log in', new_user_session_path, class: 'btn btn-default', role: 'button' %> <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-default', role: 'button' %></h4>
         </div>
       </div>
     </div>
