@@ -10,8 +10,8 @@ class Opportunity < ActiveRecord::Base
 
 
   def self.search(search)
-    @s = "%#{search}%"
-    where("title LIKE ? or description LIKE ?", @s, @s)
+    s = "%#{search}%"
+    Opportunity.where("title LIKE ? or description LIKE ?", s, s)
   end
   # def self.search(search)
   #   @s = "%#{search}%"
@@ -24,4 +24,15 @@ class Opportunity < ActiveRecord::Base
   #   Opportunity.joins(:user).where("users.name LIKE ?", s)
   # end
 
+  # def self.search(search)
+  #   s = "%#{search}%"
+  #   titles_and_descriptons = Opportunity.where("title LIKE ? or description LIKE ?", s, s)
+  #   organizations = Opportunity.joins(:user).where("users.name LIKE ?", s)
+  #   titles_and_descriptons + organizations
+  # end
+
+  # def self.search(search)
+  #   s = "%#{search}%"
+  #   Opportunity.where("title LIKE ? or description LIKE ?", s, s).or.joins(:user).where("users.name LIKE ?", s)
+  # end
 end
