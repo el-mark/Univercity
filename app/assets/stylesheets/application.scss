@@ -21,9 +21,14 @@
 .container {
   max-width: 1000px;
 }
-.red_span {
-  color: red;
+.color_span {
+  color: DodgerBlue;
 }
 .black_span {
   color: black;
+}
+.home-text{
+  background-color: DodgerBlue;
+  max-width: fit-content;
+  color: white;
 }
